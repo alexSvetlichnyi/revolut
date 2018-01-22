@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.alex.revolut.viewmodel.RateItemViewModel"/>
+    </data>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:focusableInTouchMode="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/img_country_flag"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:src="@{viewModel.flagImage}"
+                android:contentDescription="@string/accessibility_flag_image"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:text="@{viewModel.rateCode}"
+                    tools:text="USD"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:text="@{viewModel.rateDescription}"
+                    tools:text="US Dollar"/>
+            </LinearLayout>
+
+            <!--suppress AndroidUnknownAttribute -->
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@={viewModel.rateValue}"
+                android:textAlignment="viewEnd"
+                android:inputType="numberSigned"
+                android:onFocusChange="@{(view, hasFocus) -> viewModel.onFocusChange(view, hasFocus)}"
+                tools:ignore="LabelFor" />
+        </LinearLayout>
+</layout>

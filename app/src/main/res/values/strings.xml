@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">revolut</string>
+    <string name="network_error">Does not seem like there\'s an internet connection right now.</string>
+    <string name="accessibility_flag_image">flag image</string>
+</resources>
